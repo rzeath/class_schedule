@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(248, 217, 170);
+  padding-top: 7.5em;
+  font-family: "Inder", sans-serif;
+}
+
+/* Main Container Layout Setting */
+
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 0px; /* Adjust as needed */
+}
+
+/* Create Schedule Button */
+
+.create-schedule-btn {
+  color: #f3e7e7;
+  background: #011f01;
+  width: 11em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+/* Schedule Title Bar */
+
+.schedule-title-bar {
+  background: #011f01;
+  display: flex;
+  width: 60em; /* Fixed width */
+  padding: 10px;
+  margin-top: 1.25em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.schedule-title-bar input {
+  width: 100%;
+  text-align: center;
+  height: 2.5em;
+}
+
+/* Calendar Layout */
+
+.calendar-layout-container {
+  z-index: 1;
+  position: relative;
+  background-color: #011f01;
+  width: 60rem; /* Fixed width */
+  margin-top: 1.25em;
+  padding: 1em;
+}
+
+.calendar-header-row {
+  color: #f3e7e7;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.time-col {
+  font-size: 15px;
+  flex-basis: 0;
+  flex-grow: .70;
+  max-width: 100%;
+}
+
+.day-col {
+  font-size: 25px;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.calendar-header-row p {
+  font-size: 10px;
+  font-style: italic;
+}
+
+.calendar-days-row {
+  z-index: 2;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-evenly;
+  max-width: 100%;
+  border-radius: 0;
+}
+
+#time-calendar {
+  position: relative;
+  width: 100%;
+}
+
+.hour-line {
+  position: absolute;
+  width: 100%;
+  font-size: 12px;
+}
+
+.hour-line::before {
+  color: white;
+  display: block;
+  text-align: center;
+  left: -50px;
+  top: -12px;
+  content: attr(data-hour);
+  margin-top: 50%;
+}
+
+.time-cal-col {
+  flex-basis: 0;
+  flex-grow: .70;
+  max-width: 100%;
+}
+
+.day-cal-col {
+  justify-content: center;
+  background-color: #f3e7e7;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+/* Add Class Button */
+
+.add-class-btn {
+  color: #f3e7e7;
+  background: #011f01;
+  width: 10em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  margin-top: 9em;
+}
+
+/* Export Button */
+
+.export-btn {
+  color: #f3e7e7;
+  background: #011f01;
+  width: 10em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  margin-top: 1.25em;
+}
+
+/* Class Details Container */
+
+.class-details-container {
+  background-color: #011f01;
+  height: 20vh;
+  width: 22em; /* Fixed width */
+  margin-top: 1.25em;
+}
