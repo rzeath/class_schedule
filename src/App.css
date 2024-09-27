@@ -3,28 +3,29 @@
   padding: 0;
   border-radius: 20px;
   box-sizing: border-box;
-}
+} 
 
 body {
-  background-color: rgb(248, 217, 170);
+  
+  background: #4e4a4a;
   padding-top: 7.5em;
   font-family: "Inder", sans-serif;
 }
 
 /* Main Container Layout Setting */
 
-.main-container {
+.main-container { 
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 0px; /* Adjust as needed */
+  justify-content: space-around;
+  gap: 0; /* Adjust as needed */
 }
 
 /* Create Schedule Button */
 
 .create-schedule-btn {
   color: #f3e7e7;
-  background: #011f01;
+  background: linear-gradient(45deg,  #011f01, #15585c,  #011f01);
   width: 11em;
   display: flex;
   justify-content: center;
@@ -32,12 +33,17 @@ body {
   padding: 15px;
 }
 
+.create-schedule-btn:hover {
+  background: linear-gradient(45deg, #15585c, #011f01, #15585c);
+  cursor: pointer;
+}
+
 /* Schedule Title Bar */
 
 .schedule-title-bar {
-  background: #011f01;
+  background: linear-gradient(0deg, #011f01, #248b91, #011f01);
   display: flex;
-  width: 60em; /* Fixed width */
+  width: 80em; /* Fixed width */
   padding: 10px;
   margin-top: 1.25em;
   margin-left: auto;
@@ -55,8 +61,8 @@ body {
 .calendar-layout-container {
   z-index: 1;
   position: relative;
-  background-color: #011f01;
-  width: 60rem; /* Fixed width */
+  background: linear-gradient(0deg,  #011f01, #248b91,  #011f01);
+  width: 100%; /* Fixed width */
   margin-top: 1.25em;
   padding: 1em;
 }
@@ -73,11 +79,13 @@ body {
 .time-col {
   font-size: 15px;
   flex-basis: 0;
-  flex-grow: .70;
+  flex-grow: .90;
   max-width: 100%;
 }
 
 .day-col {
+  padding-left: 10px;
+  padding-right: 10px;
   font-size: 25px;
   flex-basis: 0;
   flex-grow: 1;
@@ -123,11 +131,13 @@ body {
 
 .time-cal-col {
   flex-basis: 0;
-  flex-grow: .70;
+  flex-grow: .90;
   max-width: 100%;
 }
 
 .day-cal-col {
+  padding-left: 10px;
+  padding-right: 10px;
   justify-content: center;
   background-color: #f3e7e7;
   flex-basis: 0;
@@ -139,7 +149,7 @@ body {
 
 .add-class-btn {
   color: #f3e7e7;
-  background: #011f01;
+  background: linear-gradient(45deg,  #011f01, #15585c,  #011f01);
   width: 10em;
   display: flex;
   justify-content: center;
@@ -148,17 +158,27 @@ body {
   margin-top: 9em;
 }
 
+.add-class-btn:hover {
+  background: linear-gradient(45deg,  #15585c, #011f01,  #15585c);
+  cursor: pointer;
+}
+
 /* Export Button */
 
 .export-btn {
   color: #f3e7e7;
-  background: #011f01;
+  background: linear-gradient(45deg,  #011f01, #15585c,  #011f01);
   width: 10em;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15px;
   margin-top: 1.25em;
+}
+
+.export-btn:hover {
+  background: linear-gradient(45deg,  #15585c, #011f01,  #15585c);
+  cursor: pointer;
 }
 
 /* Class Details Container */
@@ -168,4 +188,158 @@ body {
   height: 20vh;
   width: 22em; /* Fixed width */
   margin-top: 1.25em;
+}
+
+/* Overlay Form Container */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.overlay-content {
+  background: linear-gradient(0deg,  rgba(1, 31, 1, 0.5), rgba(36, 139, 145, 0.5), rgba(1, 31, 1, 0.5));
+  padding: 20px;
+  border-radius: 20px; /* Consistent with global border-radius */
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.form-group .invalid-feedback {
+  color: rgb(250, 106, 106);
+  display: none;
+  font-size: 13px;
+  text-align: center;
+}
+
+.needs-validation .form-control:invalid + .invalid-feedback {
+  display: block;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* Custom Checkbox Styling for Meeting Period Days */
+
+.meeting-period-days {
+  display: flex;
+  gap: 5px;
+}
+
+.day-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #f3e7e7;
+  border: 1px solid #248b91;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.day-btn input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.day-btn span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  color: #248b91;
+  pointer-events: none;
+}
+
+.day-btn input:checked + span {
+  background-color: #0c3133;
+  color: white;
+  border-radius: 5px;
+}
+
+.timepicker-field {
+  color: white;
+}
+
+@media (max-width: 1600px) {
+
+  /* Create Schedule Button */
+
+  .create-schedule-btn {
+    color: #f3e7e7;
+    background: linear-gradient(45deg,  #011f01, #15585c,  #011f01);
+    width: 11em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+  }
+
+  /* Schedule Title Bar */
+
+  .schedule-title-bar {
+    background: linear-gradient(0deg, #011f01, #248b91, #011f01);
+    display: flex;
+    width: 60em; /* Fixed width */
+    padding: 10px;
+    margin-top: 1.25em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .schedule-title-bar input {
+    width: 100%;
+    text-align: center;
+    height: 2.5em;
+  }
+
+  /* Calendar Layout */
+
+  .calendar-layout-container {
+    z-index: 1;
+    position: relative;
+    background: linear-gradient(0deg,  #011f01, #248b91,  #011f01);
+    width: 60em; /* Fixed width */
+    margin-top: 1.25em;
+    padding: 1em;
+  }
+
 }
