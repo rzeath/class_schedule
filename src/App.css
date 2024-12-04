@@ -6,7 +6,6 @@
 } 
 
 body {
-  
   background: #4e4a4a;
   padding-top: 7.5em;
   font-family: "Inder", sans-serif;
@@ -15,6 +14,7 @@ body {
 /* Main Container Layout Setting */
 
 .main-container { 
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -43,7 +43,7 @@ body {
 .schedule-title-bar {
   background: linear-gradient(0deg, #011f01, #248b91, #011f01);
   display: flex;
-  width: 80em; /* Fixed width */
+  width: 60em; /* Fixed width */
   padding: 10px;
   margin-top: 1.25em;
   margin-left: auto;
@@ -62,9 +62,25 @@ body {
   z-index: 1;
   position: relative;
   background: linear-gradient(0deg,  #011f01, #248b91,  #011f01);
-  width: 100%; /* Fixed width */
+  width: 60em; /* Fixed width */
   margin-top: 1.25em;
   padding: 1em;
+}
+
+.class-cards-container {
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.class-cards-container h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  margin: 8px 0;
+  border-radius: px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .calendar-header-row {
@@ -79,7 +95,7 @@ body {
 .time-col {
   font-size: 15px;
   flex-basis: 0;
-  flex-grow: .90;
+  flex-grow: .5;
   max-width: 100%;
 }
 
@@ -88,7 +104,7 @@ body {
   padding-right: 10px;
   font-size: 25px;
   flex-basis: 0;
-  flex-grow: 1;
+  flex-grow: .5;
   max-width: 100%;
 }
 
@@ -131,7 +147,7 @@ body {
 
 .time-cal-col {
   flex-basis: 0;
-  flex-grow: .90;
+  flex-grow: .5;
   max-width: 100%;
 }
 
@@ -141,11 +157,64 @@ body {
   justify-content: center;
   background-color: #f3e7e7;
   flex-basis: 0;
-  flex-grow: 1;
+  flex-grow: 0.5;
   max-width: 100%;
 }
 
-/* Add Class Button */
+ /*cubessss*/
+
+.color-cubes {
+  display: flex;
+  gap: 4px;
+}
+
+.color-cube {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.color-cube:hover {
+  border-color: #333;
+}
+
+.class-card {
+  position: relative; /* Make the parent container a positioning reference */
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 0 0 0;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 8px; 
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.edit-btn {
+  background-color: #0a0b0a;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.delete-btn {
+  background: black;
+  border: none;
+  color: #ff4d4d;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  line-height: 1;
+}
 
 .add-class-btn {
   color: #f3e7e7;
@@ -185,6 +254,7 @@ body {
 
 .class-details-container {
   background-color: #011f01;
+  display: flex;
   height: 20vh;
   width: 22em; /* Fixed width */
   margin-top: 1.25em;
@@ -206,11 +276,19 @@ body {
 }
 
 .overlay-content {
+  position: relative;
   background: linear-gradient(0deg,  rgba(1, 31, 1, 0.5), rgba(36, 139, 145, 0.5), rgba(1, 31, 1, 0.5));
   padding: 20px;
   border-radius: 20px; /* Consistent with global border-radius */
   width: 300px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  overflow: visible;
+}
+
+.timepicker-field {
+  position: relative;
+  color: white;
 }
 
 .form-group {
@@ -318,7 +396,7 @@ button:hover {
   .schedule-title-bar {
     background: linear-gradient(0deg, #011f01, #248b91, #011f01);
     display: flex;
-    width: 60em; /* Fixed width */
+    width: 60em; 
     padding: 10px;
     margin-top: 1.25em;
     margin-left: auto;
