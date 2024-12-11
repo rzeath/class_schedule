@@ -253,9 +253,10 @@ body {
 /* Class Details Container */
 
 .class-details-container {
+  padding: 20px;
+  color: white;
   background-color: #011f01;
   display: flex;
-  height: 20vh;
   width: 22em; /* Fixed width */
   margin-top: 1.25em;
 }
