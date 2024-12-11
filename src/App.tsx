@@ -10,6 +10,7 @@ import { paintCalendar } from './schedule';
 type ClassDetails = {
   id: number;
   name: string;
+  instructor: string;
   days: string[];
   startTime: Dayjs | null;
   endTime: Dayjs | null;
@@ -19,12 +20,15 @@ type ClassDetails = {
 function App() {
   const [isOverlayVisible, setOverlayVisible] = useState(false);
   const [className, setClassName] = useState('');
+  const [instructorName, setInstructorName] = useState('');
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [startTime, setStartTime] = useState<Dayjs | null>(null);
   const [endTime, setEndTime] = useState<Dayjs | null>(null);
   const [classColor, setClassColor] = useState('#FFFFFF');
   const [classes, setClasses] = useState<ClassDetails[]>([]);
   const [editClassId, setEditClassId] = useState<number | null>(null);
+  const [selectedClassDetails, setSelectedClassDetails] = useState<ClassDetails | null>(null);
+
 
   useEffect(() => {
     paintCalendar();
@@ -39,6 +43,7 @@ function App() {
   const handleCloseOverlay = () => {
     setOverlayVisible(false);
     setClassName('');
+    setInstructorName('');
     setSelectedDays([]);
     setStartTime(null);
     setEndTime(null);
@@ -53,6 +58,7 @@ function App() {
             ? {
                 ...classItem,
                 name: className,
+                instructor: instructorName,
                 days: selectedDays,
                 startTime,
                 endTime,
@@ -65,6 +71,7 @@ function App() {
       const newClass: ClassDetails = {
         id: generateClassId(),
         name: className,
+        instructor: instructorName,
         days: selectedDays,
         startTime,
         endTime,
@@ -85,6 +92,9 @@ function App() {
   };
 
   const handleDeleteClass = (id: number) => {
+    if (selectedClassDetails?.id === id) {
+      setSelectedClassDetails(null);
+    }
     setClasses(classes.filter((classItem) => classItem.id !== id));
   };
 
@@ -152,21 +162,29 @@ function App() {
                           key={classItem.id}
                           className="class-card"
                           style={{ backgroundColor: classItem.color }}
+                          onClick={() => setSelectedClassDetails(classItem)}
                         >
                           <h3>{classItem.name}</h3>
                           <p>
                             Time: {classItem.startTime?.format('hh:mm A')} -{' '}
                             {classItem.endTime?.format('hh:mm A')}
+                            
                           </p>
                           <button
                             className="edit-btn"
-                            onClick={() => handleEditClass(classItem.id)}
+                            onClick={(e) => {
+                              e.stopPropagation(); // Prevents triggering the parent click event
+                              handleEditClass(classItem.id);
+                            }}
                           >
                             Edit
                           </button>
                           <button
                             className="delete-btn"
-                            onClick={() => handleDeleteClass(classItem.id)}
+                            onClick={(e) => {
+                              e.stopPropagation(); // Prevents triggering the parent click event
+                              handleDeleteClass(classItem.id);
+                            }}
                           >
                             Delete
                           </button>
@@ -189,9 +207,27 @@ function App() {
             <div className="export-btn">Export</div>
           </div>
           <div className="class-details-container">
-            <div></div>
-            <div></div>
-            <div></div>
+            <h3>Class Details</h3>
+            {selectedClassDetails ? (
+              <div className="details">
+                <p><strong>Name:</strong> {selectedClassDetails.name}</p>
+                <p><strong>Name:</strong> {selectedClassDetails.instructor}</p>
+                <p><strong>Days:</strong> {selectedClassDetails.days.join(', ')}</p>
+                <p>
+                  <strong>Time:</strong>{' '}
+                  {selectedClassDetails.startTime?.format('hh:mmA')} -{' '}
+                  {selectedClassDetails.endTime?.format('hh:mmA')}
+                </p>
+                <p>
+                  <strong>Color:</strong>{' '}
+                  <span style={{ backgroundColor: selectedClassDetails.color, padding: '2px 8px' }}>
+                    {selectedClassDetails.color}
+                  </span>
+                </p>
+              </div>
+            ) : (
+              <p>Select a class from the calendar to view details.</p>
+            )}
           </div>
         </div>
       </div>
@@ -217,6 +253,21 @@ function App() {
                 />
                 <div className="invalid-feedback">
                   Please add a class name
+                </div>
+              </div>
+              <div className="form-group">
+                <input
+                  className="form-control"
+                  autoComplete="off"
+                  id="add-instructor-name"
+                  placeholder="Engr. Henry Danlag"
+                  type="text"
+                  value={instructorName}
+                  onChange={(e) => setInstructorName(e.target.value)}
+                  required
+                />
+                <div className="invalid-feedback">
+                  Please add a instructor name
                 </div>
               </div>
 
