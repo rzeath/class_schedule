@@ -6,7 +6,7 @@
 } 
 
 body {
-  background: #4e4a4a;
+  background: linear-gradient(45deg,  #011f01, #196b6d,  #042b04);
   padding-top: 7.5em;
   font-family: "Inder", sans-serif;
 }
@@ -69,18 +69,14 @@ body {
 
 .class-cards-container {
   font-size: 10px;
-  line-height: 1.5;
+  line-height: 1.3;
 }
 
-.class-cards-container h3 {
-  text-decoration: underline;
+.class-cards-container h4 {
+  font-size: 12px;
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
-  margin: 8px 0;
-  border-radius: px;
   text-align: center;
-  font-size: 14px;
-  line-height: 1.5;
 }
 
 .calendar-header-row {
@@ -95,16 +91,16 @@ body {
 .time-col {
   font-size: 15px;
   flex-basis: 0;
-  flex-grow: .5;
+  flex-grow: .4;
   max-width: 100%;
 }
 
 .day-col {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   font-size: 25px;
   flex-basis: 0;
-  flex-grow: .5;
+  flex-grow: .61;
   max-width: 100%;
 }
 
@@ -147,17 +143,17 @@ body {
 
 .time-cal-col {
   flex-basis: 0;
-  flex-grow: .5;
+  flex-grow: .4;
   max-width: 100%;
 }
 
 .day-cal-col {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   justify-content: center;
   background-color: #f3e7e7;
   flex-basis: 0;
-  flex-grow: 0.5;
+  flex-grow: 0.61;
   max-width: 100%;
 }
 
@@ -166,6 +162,7 @@ body {
 .color-cubes {
   display: flex;
   gap: 4px;
+  justify-content: center;
 }
 
 .color-cube {
@@ -187,33 +184,41 @@ body {
   margin: 10px 0 0 0;
 }
 
-.card-buttons {
-  display: flex;
-  gap: 8px; 
-  position: absolute;
-  top: 5px;
-  right: 5px;
+.class-details {
+  position: relative;
+  bottom: 13px;
 }
 
 .edit-btn {
-  background-color: #0a0b0a;
+  position: relative;
+  text-align: center;
+  font-weight: bolder;
+  width: 6px;
+  left: 75px;
+  bottom: 15px;
+  background-color: white;
   border: none;
-  color: white;
+  color: black;
   padding: 4px 8px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 7px;
 }
 
 .delete-btn {
-  background: black;
+  position: relative;
+  text-align: center;
+  font-weight: bolder;
+  width: 15px;
+  left: 77px;
+  bottom: 15px;
+  background: white;
   border: none;
-  color: #ff4d4d;
-  font-size: 12px;
+  color: #f40000;
+  font-size: 7px;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 4px 5px;
   border-radius: 4px;
-  line-height: 1;
 }
 
 .add-class-btn {
@@ -255,10 +260,19 @@ body {
 .class-details-container {
   padding: 20px;
   color: white;
-  background-color: #011f01;
+  background: linear-gradient(45deg,  #011f01, #15585c,  #011f01);
   display: flex;
-  width: 22em; /* Fixed width */
+  width: 18em; /* Fixed width */
   margin-top: 1.25em;
+}
+
+.details p {
+  padding-bottom: 5px;
+}
+
+#className {
+  font-weight: bolder;
+  font-size: 40px;
 }
 
 /* Overlay Form Container */
@@ -278,13 +292,25 @@ body {
 
 .overlay-content {
   position: relative;
+  overflow: visible;
+  animation: fadeIn 0.3s ease-in-out;
   background: linear-gradient(0deg,  rgba(1, 31, 1, 0.5), rgba(36, 139, 145, 0.5), rgba(1, 31, 1, 0.5));
   padding: 20px;
   border-radius: 20px; /* Consistent with global border-radius */
   width: 300px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 10000;
-  overflow: visible;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .timepicker-field {
@@ -397,17 +423,20 @@ button:hover {
   .schedule-title-bar {
     background: linear-gradient(0deg, #011f01, #248b91, #011f01);
     display: flex;
-    width: 60em; 
+    width: 70em; 
     padding: 10px;
-    margin-top: 1.25em;
     margin-left: auto;
     margin-right: auto;
   }
 
   .schedule-title-bar input {
+    padding: 7px 0 0 0;
+    font-weight: bolder;
     width: 100%;
     text-align: center;
-    height: 2.5em;
+    justify-content: center;
+    font-size: 1.3em;
+    height: 2em;
   }
 
   /* Calendar Layout */
@@ -416,7 +445,7 @@ button:hover {
     z-index: 1;
     position: relative;
     background: linear-gradient(0deg,  #011f01, #248b91,  #011f01);
-    width: 60em; /* Fixed width */
+    width: 70em; /* Fixed width */
     margin-top: 1.25em;
     padding: 1em;
   }
