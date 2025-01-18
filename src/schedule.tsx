@@ -12,13 +12,13 @@ function minutesToHours(minutes:number){
 
 export function paintCalendar(){
     // let savedClasses : any = getSavedClasses () || {};
-    const minStartTime: number = 8 * 60; // 8am
+    const minStartTime: number = 7 * 60; // 8am
     const maxEndTime: number = 15 * 60; // 3pm
 
     const startHourMins: number = Math.floor(minStartTime / 60) * 60;
     const endHourMins: number = Math.ceil(maxEndTime / 60) * 60;
 
-    const scaleFactor: number = 1.2;
+    const scaleFactor: number = 1.7;
     const calendar = document.getElementById('time-calendar');
 
     if(calendar){
@@ -30,11 +30,21 @@ export function paintCalendar(){
 
         //add all of the hr element for hour lines
         for (let i = startHourMins; i<= endHourMins; i += 60){
-            const hourLine = document.createElement('div');         
-            hourLine.className = 'hour-line';
-            hourLine.style.top = (i - startHourMins) * scaleFactor + 'px';
-            hourLine.setAttribute('data-hour', minutesToHours(i).split(':')[0]+':00 - '+ minutesToHours(i + 60).split(':')[0]+ ':00');
-            calendar.appendChild(hourLine);                                                                                                                                               
+
+            if(i != 720) {
+                const hourLine = document.createElement('div');         
+                hourLine.className = 'hour-line';
+                hourLine.style.top = (i - startHourMins) * scaleFactor + 'px';
+                hourLine.setAttribute('data-hour', minutesToHours(i).split(':')[0]+':00 - '+ minutesToHours(i + 60).split(':')[0]+ ':00');
+                calendar.appendChild(hourLine);                                
+            }
+            else {
+                const hourLine = document.createElement('div');         
+                hourLine.className = 'hour-line';
+                hourLine.style.top = (i - startHourMins) * scaleFactor + 'px';
+                hourLine.setAttribute('data-hour', 'LUNCH BREAK 12:00 - 1:00');
+                calendar.appendChild(hourLine);   
+            }
         }
     }else{
         console.error("Calendar element not found");
